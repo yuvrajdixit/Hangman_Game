@@ -1,14 +1,14 @@
 from tkinter import *
-
+from tkinter import messagebox
 from string import ascii_uppercase
-
+import random
 
 
 window = Tk()
 window.title('Hangman-GUESS CITIES NAME')
-word_list= ['MUMBAI','BANGLORE','HYDRABAD','KOLKATA','SURAT','PUNE','JAIPUR','AMRITSAR','ALLAHABAD','RANCHI',
-            'LUCKNOW','KANPUR','NAGPUR','INDORE','THANE','PATNA','GHAZIABAD','AGRA','FARIDABAD','MEERUT','RAJKOT','VARANASI','SRINAGAR',
-            'RAIPUR','KOTA']
+word_list= ['MUMBAI','DELHI','BANGLORE','HYDRABAD','AHMEDABAD','CHENNAI','KOLKATA','SURAT','PUNE','JAIPUR','AMRITSAR','ALLAHABAD','RANCHI',
+            'LUCKNOW','KANPUR','NAGPUR','INDORE','THANE','BHOPAL','PATNA','GHAZIABAD','AGRA','FARIDABAD','MEERUT','RAJKOT','VARANASI','SRINAGAR',
+            'RAIPUR','KOTA','JHANSI']
             
 photos = [PhotoImage(file="C:\hangman game\hang0.png"), PhotoImage(file="C:\hangman game\hang1.png"), PhotoImage(file="C:\hangman game\hang2.png"),
 PhotoImage(file="C:\hangman game\hang3.png"), PhotoImage(file="C:\hangman game\hang4.png"), PhotoImage(file="C:\hangman game\hang5.png"),
@@ -20,7 +20,7 @@ PhotoImage(file="C:\hangman game\hang9.png"), PhotoImage(file="C:\hangman game\h
 
 
 
-
+def newGame():
     global the_word_withSpaces
     global numberOfGuesses
     numberOfGuesses =0
@@ -41,22 +41,22 @@ def guess(letter):
 				lblWord.set("".join(guessed))
 				if lblWord.get()==the_word_withSpaces:
 					messagebox.showinfo("Hangman","You guessed it!")
-		
+		else:
 			numberOfGuesses += 1
 			imgLabel.config(image=photos[numberOfGuesses])
 			if numberOfGuesses==11:
 					messagebox.showwarning("Hangman","Game Over")
 
 
-
+imgLabel=Label(window) 
 imgLabel.grid(row=0, column=0, columnspan=3, padx=10, pady=40)
 
 
-  
 
+lblWord = StringVar()
 Label(window, textvariable  =lblWord,font=('consolas 24 bold')).grid(row=0, column=3 ,columnspan=6,padx=10)
 
-
+n=0
 for c in ascii_uppercase:
     Button(window, text=c, command=lambda c=c: guess(c), font=('Helvetica 18'), width=4).grid(row=1+n//9,column=n%9)
     n+=1
