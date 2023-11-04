@@ -133,6 +133,7 @@ def hangman(secretWord):
                 mistakeMade += 1
                 print("Oops! That letter is not in my word:",getGuessedWord(secretWord,lettersGuessed))
                 
+                
         if 8 - mistakeMade == 0:
             print("-------------")
             print("Sorry, you ran out of guesses. The word was else.",secretWord)
