@@ -69,7 +69,7 @@ while turns > 0:
     # how many turns are left
         print ("You have", + turns, 'more guesses' )
  
-    # if the turns are equal to zero
+    # if the turns are equal to zero you will lose
         if turns == 0:           
     
         # print "You Lose"
