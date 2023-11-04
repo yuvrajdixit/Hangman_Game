@@ -21,9 +21,11 @@ PhotoImage(file="C:\hangman game\hang9.png"), PhotoImage(file="C:\hangman game\h
 
 
 def newGame():
+	
     global the_word_withSpaces
     global numberOfGuesses
     numberOfGuesses =0
+	
     
     the_word=random.choice(word_list)
     the_word_withSpaces = " ".join(the_word)
@@ -42,6 +44,7 @@ def guess(letter):
 				if lblWord.get()==the_word_withSpaces:
 					messagebox.showinfo("Hangman","You guessed it!")
 		else:
+			
 			numberOfGuesses += 1
 			imgLabel.config(image=photos[numberOfGuesses])
 			if numberOfGuesses==11:
